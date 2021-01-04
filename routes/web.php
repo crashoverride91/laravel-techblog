@@ -30,3 +30,10 @@ Route::get('/contact', function () {
 Route::get('/post', function () {
     return view('website.post');
 });
+
+
+//Admin Panel Routes
+
+Route::get('/test', function(){
+    return view('admin.dashboard.index');
+});
