@@ -12,7 +12,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/', function () {
     return view('website.home');
-});
+})->name('website');
 
 
 Route::get('/about', function () {
@@ -34,6 +34,13 @@ Route::get('/post', function () {
 
 //Admin Panel Routes
 
-Route::get('/test', function(){
-    return view('admin.dashboard.index');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']],function(){
+
+    Route::get('/test', function(){
+        return view('admin.dashboard.index');
+    });
+
+    Route::resource('category', 'CategoryController');
+    
+
 });
