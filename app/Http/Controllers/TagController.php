@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Session;
 use App\Models\Tag;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class TagController extends Controller
 {
@@ -27,7 +27,7 @@ class TagController extends Controller
      */
     public function create()
     {
-       
+        return view('admin.tag.create');  
     }
 
     /**
@@ -38,7 +38,18 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $this->validate($request,[
+            'name' => 'required|unique:tags,name',
+        ]);
+
+        $tag = Tag::create([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name,'-'),
+            'description' => $request->description,  
+         ]);
+
+         Session::flash('success', 'Tag created successfully');
+         return redirect()->back();
     }
 
     /**
@@ -47,9 +58,9 @@ class TagController extends Controller
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show(Tag $tag)
     {
-
+        /* return view('admin.tag.show', compact('tag')); */
     }
     
     /**
@@ -58,9 +69,9 @@ class TagController extends Controller
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit(Tag $tag)
     {
-       
+        return view('admin.tag.edit', compact('tag'));
     }
 
     /**
@@ -70,9 +81,19 @@ class TagController extends Controller
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, Tag $tag)
     {
-        
+        $this->validate($request,[
+            'name' => "required|unique:tags,name, $tag->name",
+        ]);
+
+            $tag->name = $request->name;
+            $tag->slug = Str::slug($request->name, '-');
+            $tag->description = $request->description;
+            $tag->save();
+
+         Session::flash('success', 'Tag updated successfully');
+         return redirect()->back();
     }
 
     /**
@@ -81,8 +102,13 @@ class TagController extends Controller
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(Tag $tag)
     {
-        
+        if($tag){
+             $tag->delete();
+             Session::flash('success', 'Tag deleted successfully');
+        }
+
+        return redirect()->back();
     }
 }

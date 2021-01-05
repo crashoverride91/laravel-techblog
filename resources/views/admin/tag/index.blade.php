@@ -38,7 +38,6 @@
                                 <th style="width: 10px">#</th>
                                 <th>Name</th>
                                 <th>Slug</th>
-                                <th>Post Count</th>
                                 <th style="width: 40px">Action</th>
                               </tr>
                             </thead>
@@ -49,9 +48,7 @@
                                 <td>{{$tag->id}}</td>
                                 <td>{{$tag->name}}</td>
                                 <td>{{$tag->slug}}</td>
-                                <td>
-                                  {{$tag->id}}
-                                </td>
+
                                 <td class="d-flex">
                                   <a href="{{route('tag.edit', [$tag->id])}}" class="btn btn-sm btn-primary mr-1"><i class="fas fa-edit"></i></a>
                                   <form action="{{route('tag.destroy',[$tag->id])}}" class="mr-1" method="POST">
@@ -66,7 +63,7 @@
                               @else 
 
                                 <tr>
-                                  <td colspan="5">
+                                  <td colspan="4">
                                     <h5 class="text-center">No tags found.</h5>
                                   </td>
                                 </tr>
