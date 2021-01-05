@@ -19,6 +19,7 @@
     </div><!-- /.container-fluid -->
 </div>
 
+{{-- Main Content --}}
 <div class="content">
         <div class="container-fluid">
             <div class="row">
@@ -26,78 +27,40 @@
                     <div class="card">
                         <div class="card-header">
                           <div class="d-flex justify-content-between align-items-center">
-                                <h3 class="card-title">Category List</h3>
-                              <a href="{{route('category.create')}}" class="btn btn-primary">Create category</a>
+                                <h3 class="card-title">Create Category</h3>
+                              <a href="{{route('category.index')}}" class="btn btn-primary">Go back to Category List</a>
                           </div>
-          
-                        {{--   <div class="card-tools">
-                            <ul class="pagination pagination-sm float-right">
-                              <li class="page-item"><a class="page-link" href="#">«</a></li>
-                              <li class="page-item"><a class="page-link" href="#">1</a></li>
-                              <li class="page-item"><a class="page-link" href="#">2</a></li>
-                              <li class="page-item"><a class="page-link" href="#">3</a></li>
-                              <li class="page-item"><a class="page-link" href="#">»</a></li>
-                            </ul>
-                          </div> --}}
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body p-0">
-                          <table class="table">
-                            <thead>
-                              <tr>
-                                <th style="width: 10px">#</th>
-                                <th>Name</th>
-                                <th>Slug</th>
-                                <th>Post Count</th>
-                                <th>Progress</th>
-                                <th style="width: 40px">Action</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>1.</td>
-                                <td>Update software</td>
-                                <td>Update software</td>
-                                <td>
-                                  <div class="progress progress-xs">
-                                    <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+
+                        
+                        
+                          
+                          <div class="card-body p-0">
+                            <div class="row">
+                              <div class="col-12 col-lg-6 offset-lg-3  col-md-8 offset-md-2">
+                                <form action="{{route('category.store')}}" method="POST">
+                                  @csrf 
+                                  <div class="card-body">
+                                    @include('includes.errors')
+                                    <div class="form-group">
+                                      <label for="name">Category Name </label>
+                                      <input type="name" name="name" class="form-control" id="name" placeholder="Enter name">
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label for="exampleInputPassword1">Description</label>
+                                    <textarea name="description" id="description" rows="4" class="form-control" placeholder="Enter description"></textarea>
+                                    </div>
+
+                                    <div class="footer">
+                                      <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
                                   </div>
-                                </td>
-                                <td><span class="badge bg-danger">55%</span></td>
-                              </tr>
-                              {{-- <tr>
-                                <td>2.</td>
-                                <td>Clean database</td>
-                                <td>
-                                  <div class="progress progress-xs">
-                                    <div class="progress-bar bg-warning" style="width: 70%"></div>
-                                  </div>
-                                </td>
-                                <td><span class="badge bg-warning">70%</span></td>
-                              </tr>
-                              <tr>
-                                <td>3.</td>
-                                <td>Cron job running</td>
-                                <td>
-                                  <div class="progress progress-xs progress-striped active">
-                                    <div class="progress-bar bg-primary" style="width: 30%"></div>
-                                  </div>
-                                </td>
-                                <td><span class="badge bg-primary">30%</span></td>
-                              </tr>
-                              <tr>
-                                <td>4.</td>
-                                <td>Fix and squish bugs</td>
-                                <td>
-                                  <div class="progress progress-xs progress-striped active">
-                                    <div class="progress-bar bg-success" style="width: 90%"></div>
-                                  </div>
-                                </td>
-                                <td><span class="badge bg-success">90%</span></td>
-                              </tr> --}}
-                            </tbody>
-                          </table>
-                        </div>
+                                </form>
+                    
+                              </div>
+                            </div>
+                          </div>
                         <!-- /.card-body -->
                       </div>
                 </div>

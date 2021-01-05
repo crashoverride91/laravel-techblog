@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller
 {
@@ -35,7 +37,20 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validation
+
+        $this->validate($request,[
+            'name' => 'required|unique:categories,name',
+        ]);
+
+        $category = Category::create([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name,'-'),
+            'description' => $request->description,  
+         ]);
+
+         Session::flash('success', 'Category created successfully');
+         return redirect()->back();
     }
 
     /**
