@@ -65,11 +65,11 @@
                               @endforeach
                               @else 
 
-                              <tr>
-                                <td colspan="5">
-                                  <h5 class="text-center">No tags found.</h5>
-                                </td>
-                              </tr>
+                                <tr>
+                                  <td colspan="5">
+                                    <h5 class="text-center">No tags found.</h5>
+                                  </td>
+                                </tr>
 
                               @endif
                               
