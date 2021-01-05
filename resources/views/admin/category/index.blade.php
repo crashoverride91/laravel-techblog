@@ -62,45 +62,16 @@
                                 </td>
                                 <td class="d-flex">
                                   <a href="{{route('category.edit', [$category->id])}}" class="btn btn-sm btn-primary mr-1"><i class="fas fa-edit"></i></a>
-                                  <form action="{{route('category.destroy',[$category->id])}}" class="mr-1">
+                                  <form action="{{route('category.destroy',[$category->id])}}" class="mr-1" method="POST">
                                     @method('DELETE')
                                     @csrf
                                     <button type="submit"  class="btn btn-sm btn-danger mr-1"><i class="fas fa-trash"></i></button>
                                   </form>
-                                  <a href="{{route('category.show', [$category->id])}}" class="btn btn-sm btn-success mr-1"><i class="fas fa-eye"></i></a>
+                                  {{-- <a href="{{route('category.show', [$category->id])}}" class="btn btn-sm btn-success mr-1"><i class="fas fa-eye"></i></a> --}}
                                 </td>
                               </tr>
                               @endforeach
-                              {{-- <tr>
-                                <td>2.</td>
-                                <td>Clean database</td>
-                                <td>
-                                  <div class="progress progress-xs">
-                                    <div class="progress-bar bg-warning" style="width: 70%"></div>
-                                  </div>
-                                </td>
-                                <td><span class="badge bg-warning">70%</span></td>
-                              </tr>
-                              <tr>
-                                <td>3.</td>
-                                <td>Cron job running</td>
-                                <td>
-                                  <div class="progress progress-xs progress-striped active">
-                                    <div class="progress-bar bg-primary" style="width: 30%"></div>
-                                  </div>
-                                </td>
-                                <td><span class="badge bg-primary">30%</span></td>
-                              </tr>
-                              <tr>
-                                <td>4.</td>
-                                <td>Fix and squish bugs</td>
-                                <td>
-                                  <div class="progress progress-xs progress-striped active">
-                                    <div class="progress-bar bg-success" style="width: 90%"></div>
-                                  </div>
-                                </td>
-                                <td><span class="badge bg-success">90%</span></td>
-                              </tr> --}}
+                              
                             </tbody>
                           </table>
                         </div>

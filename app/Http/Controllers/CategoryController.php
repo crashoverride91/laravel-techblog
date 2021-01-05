@@ -62,7 +62,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        
     }
 
     /**
@@ -73,7 +73,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -85,7 +85,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $this->validate($request,[
+            'name' => "required|unique:categories,name, $category->name",
+        ]);
+
+            $category->name = $request->name;
+            $category->slug = Str::slug($request->name, '-');
+            $category->description = $request->description;
+            $category->save();
+
+         Session::flash('success', 'Category updated successfully');
+         return redirect()->back();
     }
 
     /**
@@ -96,6 +106,12 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        if($category){
+
+            $category->delete();
+
+            Session::flash('success', 'Category deleted successfully');
+            return redirect()->route('category.index');
+        }
     }
 }
