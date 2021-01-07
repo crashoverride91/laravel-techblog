@@ -41,15 +41,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
         $this->validate($request,[
             'title' => 'required|unique:posts,title',
             'image' => 'required|image',
             'description' => 'required',
             'category' =>'required', 
-        ]);
+        ]); 
 
-        /* dd($request->all()); */
-
+        /*  dd($request->all()); */
+ 
         $post = Post::create([
             'title' => $request->title,
             'slug' =>  Str::slug($request->title),
@@ -58,8 +59,18 @@ class PostController extends Controller
             'category_id'=> $request->category,
             'user_id' => auth()->user()->id,
             'published' => Carbon::now(), 
-        ]);
+        ]); 
 
+        if($request->has('image')){
+
+        $image = $request->image;
+        $image_new_name = time() . '.' . $image->getClientOriginalName();
+        $image->move('storage/post/', $image_new_name);
+        $post->image = '/storage/post/' . $image_new_name;
+        $post->save();
+
+        }
+        
         Session::flash('success', 'Post created successfully');
     
         return redirect()->back();
@@ -84,7 +95,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $categories = Category::all();
+        return view('admin.post.edit', compact(['post', 'categories']));
     }
 
     /**
