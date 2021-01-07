@@ -6,12 +6,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Category List</h1>
+            <h1 class="m-0 text-dark">Post List</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('website')}}">Home</a></li>
-            <li class="breadcrumb-item active">Category List</li>
+            <li class="breadcrumb-item active">Post List</li>
             </ol>
         </div><!-- /.col -->
         </div><!-- /.row -->
@@ -25,8 +25,8 @@
                     <div class="card">
                         <div class="card-header">
                           <div class="d-flex justify-content-between align-items-center">
-                                <h3 class="card-title">Category List</h3>
-                              <a href="{{route('category.create')}}" class="btn btn-primary">Create category</a>
+                                <h3 class="card-title">Post List</h3>
+                              <a href="{{route('post.create')}}" class="btn btn-primary">Create post</a>
                           </div>
           
                         {{--   <div class="card-tools">
@@ -45,30 +45,34 @@
                             <thead>
                               <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Name</th>
-                                <th>Slug</th>
-                                <th>Post Count</th>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Author</th>
                                 <th style="width: 40px">Action</th>
                               </tr>
                             </thead>
                             <tbody>
-                              @if($categories->count())
-                              @foreach($categories as $category)
+                              @if($posts->count())
+                              @foreach($posts as $post)
                               <tr>
-                                <td>{{$category->id}}</td>
-                                <td>{{$category->name}}</td>
-                                <td>{{$category->slug}}</td>
+                                <td>{{$post->id}}</td>
                                 <td>
-                                  {{$category->id}}
+                                  <div style="max-width:70px; max-height:70px; overflow:hidden">
+                                    <img src="{{asset($post->image)}}" class="img-fluid" alt="">
+                                  </div>
                                 </td>
+                                <td>{{$post->title}}</td>
+                                <td>{{$post->category_id}}</td>
+                                <td>{{$post->user_id}}</td>
                                 <td class="d-flex">
-                                  <a href="{{route('category.edit', [$category->id])}}" class="btn btn-sm btn-primary mr-1"><i class="fas fa-edit"></i></a>
-                                  <form action="{{route('category.destroy',[$category->id])}}" class="mr-1" method="POST">
+                                  <a href="{{route('post.edit', [$post->id])}}" class="btn btn-sm btn-primary mr-1"><i class="fas fa-edit"></i></a>
+                                  <form action="{{route('post.destroy',[$post->id])}}" class="mr-1" method="POST">
                                     @method('DELETE')
                                     @csrf
                                     <button type="submit"  class="btn btn-sm btn-danger mr-1"><i class="fas fa-trash"></i></button>
                                   </form>
-                                  {{-- <a href="{{route('category.show', [$category->id])}}" class="btn btn-sm btn-success mr-1"><i class="fas fa-eye"></i></a> --}}
+                                  {{-- <a href="{{route('post.show', [$post->id])}}" class="btn btn-sm btn-success mr-1"><i class="fas fa-eye"></i></a> --}}
                                 </td>
                               </tr>
                               @endforeach
@@ -76,8 +80,8 @@
                               @else 
 
                               <tr>
-                                <td colspan="5">
-                                  <h5 class="text-center">No categories found.</h5>
+                                <td colspan="6">
+                                  <h5 class="text-center">No posts found.</h5>
                                 </td>
                               </tr>
 
