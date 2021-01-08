@@ -33,13 +33,14 @@
                         </div>
 
                         
-                        
-                          
+                      
                           <div class="card-body p-0">
                             <div class="row">
                               <div class="col-12 col-lg-6 offset-lg-3  col-md-8 offset-md-2">
                                 <div class="card-body">
-                                 {{--   --}}
+                                  <form action="{{route('post.update', [$post->id])}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
                                     @include('includes.errors')
                                     <div class="form-group">
                                       <label for="title">Post title </label>
@@ -79,11 +80,11 @@
 
                                     <div class="form-group">
                                       <label for="exampleInputPassword1">Description</label>
-                                    <textarea name="description" id="description" rows="4" class="form-control" placeholder="Enter description" value="{{$post->description }}"></textarea>
+                                    <textarea name="description" id="description" rows="4" class="form-control" placeholder="Enter description" value="{{$post->description}}"></textarea>
                                     </div>
 
-                                    <div class="footer">
-                                      <button type="submit" class="btn btn-primary">Submit</button>
+                                    <div class="form-group">
+                                      <button type="submit" class="btn btn-primary">Update post</button>
                                     </div>
                                   </form>
                                 </div>
