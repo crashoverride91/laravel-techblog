@@ -69,7 +69,7 @@
 
                                     <tr>
                                         <th style="width:200px">Description</th>
-                                        <td>{{$post->description}}</td>
+                                        <td>{!! $post->description !!}</td>
                                     </tr>
                                 </tbody>
                             </table>

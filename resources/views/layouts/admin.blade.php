@@ -177,6 +177,7 @@
             <script src="{{ asset('admin') }}/js/adminlte.min.js"></script>
             <script src="{{ asset('admin') }}/js/bs-custom-file-input.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+            
             @yield('script')
             <script>
             @if(Session::has('success'))
