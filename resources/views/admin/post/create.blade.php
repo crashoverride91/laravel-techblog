@@ -65,6 +65,16 @@
                                           <label class="custom-file-label" for="image">Choose file</label>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        @foreach ($tags as $tag)
+                                          <div class="form-check">
+                                            <input class="form-check-input" name="tags[]" type="checkbox" id="tag{{$tag->id}}" value="{{$tag->id}}">
+                                            <label class="form-check-label" for="tag{{$tag->id}}">{{$tag->name}}</label>
+                                          </div>
+                                        @endforeach
+                                    </div>
+
+                                
 
                                     <div class="form-group">
                                       <label for="exampleInputPassword1">Description</label>

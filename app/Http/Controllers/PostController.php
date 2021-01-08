@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Support\Str;
@@ -29,8 +30,9 @@ class PostController extends Controller
      */
     public function create()
     {
+        $tags = Tag::all();
         $categories = Category::all();
-        return view('admin.post.create', compact('categories'));
+        return view('admin.post.create', compact(['categories', 'tags']));
     }
 
     /**
@@ -60,6 +62,8 @@ class PostController extends Controller
             'user_id' => auth()->user()->id,
             'published' => Carbon::now(), 
         ]); 
+
+        $post->tags()->attach($request->tags);
 
         if($request->has('image')){
 
@@ -95,8 +99,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        $tags = Tag::all();
         $categories = Category::all();
-        return view('admin.post.edit', compact(['post', 'categories']));
+        return view('admin.post.edit', compact(['post', 'categories', 'tags']));
     }
 
     /**
@@ -121,7 +126,7 @@ class PostController extends Controller
          $post->description = $request->description;
          $post->category_id = $request->category;
      
-         
+         $post->tags()->sync($request->tags);
     
         if($request->hasFile('image')){
 
@@ -129,10 +134,11 @@ class PostController extends Controller
         $image_new_name = time() . '.' . $image->getClientOriginalName();
         $image->move('storage/post/', $image_new_name);
         $post->image = '/storage/post/' . $image_new_name;
-        $post->save();
+        
 
         }
         
+        $post->save();
         Session::flash('success', 'Post updated successfully');
     
         return redirect()->back();
