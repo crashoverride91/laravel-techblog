@@ -132,7 +132,7 @@
                                     </a>
                                 </li>
                                 <li class="text-center mt-5">
-                                    <a href="" class="btn btn-primary text-white" target="_blank">
+                                    <a href="{{route('website')}}" class="btn btn-primary text-white" target="_blank">
                                     <p class="mb-0">
                                         View Website
                                     </p>
