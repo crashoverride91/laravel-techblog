@@ -10,7 +10,7 @@ class FrontEndController extends Controller
     public function home()
     {
         $posts = Post::orderBy('created_at', 'DESC')->take(5)->get();
-        $recentPosts = Post::orderBy('created_at', 'DESC')->paginate(9);
+        $recentPosts = Post::with('category', 'user')->orderBy('created_at', 'DESC')->paginate(9);
 
 
         return view('website.home', compact(['posts', 'recentPosts']));
@@ -30,10 +30,19 @@ class FrontEndController extends Controller
         return view('website.contact');
     }
 
-    public function post()
+    public function post($slug)
     {
+        $post = Post::with('category', 'user')->where('slug', $slug)->first();
+       
 
-        return view('website.post');
+        if($post){
+
+            return view('website.post', compact('post'));
+        }else {
+
+            return redirect('/');
+        }
+        
 
     }
 }
