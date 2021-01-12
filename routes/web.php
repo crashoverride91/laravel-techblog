@@ -10,27 +10,38 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/', function () {
+//Frontend Routes 
+
+Route::get('/', 'FrontEndController@home')->name('website');
+
+/* Route::get('/', function () {
     return view('website.home');
-})->name('website');
+})->name('website'); */
 
+Route::get('/about', 'FrontEndController@home')->name('website');
 
-Route::get('/about', function () {
+/* Route::get('/about', function () {
     return view('website.about');
-});
+}); */
 
-Route::get('/category', function () {
+Route::get('/category', 'FrontEndController@home')->name('website');
+
+/* Route::get('/category', function () {
     return view('website.category');
-});
+}); */
 
-Route::get('/contact', function () {
+Route::get('/contact', 'FrontEndController@home')->name('website');
+
+/* oute::get('/contact', function () {
     return view('website.contact');
-});
+}); */
 
-Route::get('/post', function () {
+Route::get('/post', 'FrontEndController@home')->name('website');
+
+/* Route::get('/post', function () {
     return view('website.post');
 });
-
+ */
 
 //Admin Panel Routes
 
