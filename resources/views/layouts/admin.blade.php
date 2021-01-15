@@ -116,7 +116,7 @@
                                 </li>
                                 <li class="nav-header">Your Account</li>
                                 <li class="nav-item mt-auto">
-                                    <a href="" class="nav-link">
+                                    <a href="{{route('user.profile')}}" class="nav-link">
                                     <i class="nav-icon far fa-user"></i>
                                     <p>
                                         Your Profile
