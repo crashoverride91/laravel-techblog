@@ -104,13 +104,13 @@
 @endsection 
 
 @section('script')
-   <script src="{{asset('admin/js/summernote-bs4.min.js')}}"></script>
+    <script src="{{asset('admin/js/summernote-bs4.min.js')}}"></script>
    <script>
-      $('#description').summernote({
+    /*   $('#description').summernote({
         placeholder: 'Hello Bootstrap 4',
         tabsize: 2,
         height: 300
-      });
+      }); */
    </script>
-  
+   
 @endsection 

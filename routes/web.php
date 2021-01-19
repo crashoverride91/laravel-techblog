@@ -45,3 +45,18 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']],function(){
     
     
 });
+
+
+/* Route::get('/test', function(){
+
+    $id = 60;
+    $posts = App\Models\Post::all();
+    foreach ($posts as $post){
+
+        $post->image = "https://i.picsum.photos/id/".$id."/172/640/480.jpg";
+        $post->save();
+        $id++;
+    }
+
+    return $posts;
+}); */
