@@ -18,7 +18,7 @@ Route::get('/', 'FrontEndController@home')->name('website');
 Route::get('/about', 'FrontEndController@about')->name('website.about');
 
 
-Route::get('/category', 'FrontEndController@category')->name('website.category');
+Route::get('/category/{slug}', 'FrontEndController@category')->name('website.category');
 
 
 Route::get('/contact', 'FrontEndController@contact')->name('website.contact');
@@ -47,7 +47,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']],function(){
 });
 
 
-/* Route::get('/test', function(){
+Route::get('/test', function(){
 
     $id = 60;
     $posts = App\Models\Post::all();
@@ -59,4 +59,4 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']],function(){
     }
 
     return $posts;
-}); */
+});

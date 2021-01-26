@@ -189,7 +189,7 @@
           
             
             <!-- END sidebar-box -->  
-            <div class="sidebar-box">
+            <div class="sidebar-box m-5">
               <h3 class="heading">Popular Posts</h3>
               <div class="post-entry-sidebar">
                 <ul>
@@ -211,7 +211,7 @@
             </div>
             <!-- END sidebar-box -->
 
-            <div class="sidebar-box">
+            <div class="sidebar-box m-5">
               <h3 class="heading">Categories</h3>
               <ul class="categories">
                 @foreach ($categories as $category)
@@ -221,7 +221,7 @@
             </div>
             <!-- END sidebar-box -->
 
-            <div class="sidebar-box">
+            <div class="sidebar-box m-5">
               <h3 class="heading">Tags</h3>
               <ul class="tags">
                 @foreach ($tags as $tag)
