@@ -2,6 +2,19 @@
 
 @section('content')
     
+<style>       /* stile links() */
+  .linkers{
+
+    font-size:20px;
+    
+  }
+
+ .linkers svg  {
+
+  display:none;
+  
+}
+</style>
 
   
   <div class="site-wrap">

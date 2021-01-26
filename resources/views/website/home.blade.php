@@ -2,7 +2,7 @@
 
 
 @section('content')
-<style>
+<style>   /* stile links() */
 
   .linkers{
 
