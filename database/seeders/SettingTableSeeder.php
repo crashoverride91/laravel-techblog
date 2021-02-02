@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-
-use App\Models\Setting;
 use Illuminate\Database\Seeder;
 
 class SettingTableSeeder extends Seeder
@@ -15,7 +13,7 @@ class SettingTableSeeder extends Seeder
      */
     public function run()
     {
-        App\Models\Setting::create([
+        \App\Models\Setting::create([
 
             'name'=> 'Example.com',
             'copyright' => 'Copyright © 2021 All rights reserved',
