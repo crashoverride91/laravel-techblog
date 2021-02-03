@@ -25,6 +25,8 @@ Route::get('/contact', 'FrontEndController@contact')->name('website.contact');
 
 
 Route::get('/post/{slug}', 'FrontEndController@post')->name('website.post');
+
+Route::post('/contact', 'FrontEndController@send_message')->name('website.contact');
  
 
 //Admin Panel Routes
@@ -46,8 +48,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']],function(){
     //Setting
     Route::get('setting', 'SettingController@edit')->name('setting.index');
     Route::post('setting', 'SettingController@update')->name('setting.update');
+
     
 });
+
+
 
 
 Route::get('/test', function(){

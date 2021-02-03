@@ -17,8 +17,9 @@
       <div class="container">
         <div class="row">
           <div class="col-md-7 mb-5">
-            <form action="" method="post" class="p-5 bg-white">
+            <form action="{{route('website.contact')}}" method="post" class="p-5 bg-white">
               @csrf 
+              @include('includes.errors')
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="text-black" for="fname">Name</label>

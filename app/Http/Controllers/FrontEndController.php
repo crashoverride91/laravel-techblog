@@ -53,6 +53,7 @@ class FrontEndController extends Controller
 
     public function contact()
     {
+
         return view('website.contact');
     }
 
@@ -80,5 +81,19 @@ class FrontEndController extends Controller
         }
         
 
+    }
+
+    public function send_message(Request $request)
+    {
+
+        /* dd($request->all()); */
+
+        $this->validate($request,[
+
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:200',
+            'subject'=>'required|max:255',
+            'message'=>'required|min:100',
+        ]);
     }
 }
