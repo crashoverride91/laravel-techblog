@@ -20,6 +20,7 @@ class UserTableSeeder extends Seeder
             'name' => 'Antonio Lob',
             'email'=> 'lobustoantonio@gmail.com',
             'password'=>bcrypt('milano991'),
+            'description'=> 'Lorem impsum rei garte impsum lorem.',
 
         ]);
     }

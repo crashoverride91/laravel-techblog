@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tag;
 use App\Models\Post;
+use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -29,9 +30,11 @@ class FrontEndController extends Controller
         return view('website.home', compact(['posts', 'recentPosts', 'firstPosts2', 'middlePost', 
         'lastPosts', 'firstFooterPost', 'firstfooterPosts2', 'lastFooterPost']));
     }
+
     public function about()
     {
-        return view('website.about');
+        $user = User::first();
+        return view('website.about', compact('user'));
     }
 
     public function category($slug)
