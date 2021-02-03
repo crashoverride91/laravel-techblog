@@ -90,6 +90,8 @@
                                                     <textarea name="address" id="address" class="form-control" rows="1" placeholder="enter address">{{ $setting->address}}</textarea>
                                                 </div>
                                             </div>
+
+                            
                                         </div>
                                         <div class="form-group">
                                             <div class="row">

@@ -60,14 +60,13 @@
             
             <div class="p-4 mb-3 bg-white">
               <p class="mb-0 font-weight-bold">Address</p>
-              <p class="mb-4"></p>
+              <p class="mb-4">{{$setting->address}}</p>
 
               <p class="mb-0 font-weight-bold">Phone</p>
-              <p class="mb-4"><a href="#"></a></p>
+              <p class="mb-4"><a href="#">{{$setting->phone}}</a></p>
 
               <p class="mb-0 font-weight-bold">Email Address</p>
-              <p class="mb-0"><a href="#"></a></p>
-
+              <p class="mb-0"><a href="#">{{$setting->email}}</a></p>
             </div>
 
           </div>
