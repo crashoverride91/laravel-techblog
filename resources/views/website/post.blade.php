@@ -227,7 +227,7 @@
               <h3 class="heading">Tags</h3>
               <ul class="tags">
                 @foreach ($tags as $tag)
-                <li><a href="#">{{$tag->name}}</a></li>
+                <li><a href="{{route('website.tag', ['slug'=> $tag->slug])}}">{{$tag->name}}</a></li>
                 @endforeach
               </ul>
             </div>
