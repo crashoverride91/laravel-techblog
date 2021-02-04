@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Tag;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Contact;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class FrontEndController extends Controller
 {
@@ -95,5 +97,10 @@ class FrontEndController extends Controller
             'subject'=>'required|max:255',
             'message'=>'required|min:100',
         ]);
+
+        $contact = Contact::create($request->all());
+
+        Session::flash('message-send', 'Contact Message send successfully');
+        return redirect()->back();
     }
 }
