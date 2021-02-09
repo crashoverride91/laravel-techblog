@@ -13,21 +13,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Frontend Routes 
 
 Route::get('/', 'FrontEndController@home')->name('website');
-
-
 Route::get('/about', 'FrontEndController@about')->name('website.about');
-
-
 Route::get('/category/{slug}', 'FrontEndController@category')->name('website.category');
-
 Route::get('/tag/{slug}', 'FrontEndController@tag')->name('website.tag');
-
-
 Route::get('/contact', 'FrontEndController@contact')->name('website.contact');
-
-
 Route::get('/post/{slug}', 'FrontEndController@post')->name('website.post');
-
 Route::post('/contact', 'FrontEndController@send_message')->name('website.contact');
  
 
@@ -35,9 +25,7 @@ Route::post('/contact', 'FrontEndController@send_message')->name('website.contac
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']],function(){
 
-    Route::get('/dashboard', function(){
-        return view('admin.dashboard.index');
-    });
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
     Route::resource('category', 'CategoryController');
     Route::resource('tag', 'TagController');
