@@ -29,15 +29,6 @@
                               <a href="{{route('category.create')}}" class="btn btn-primary">Create category</a>
                           </div>
           
-                        {{--   <div class="card-tools">
-                            <ul class="pagination pagination-sm float-right">
-                              <li class="page-item"><a class="page-link" href="#">«</a></li>
-                              <li class="page-item"><a class="page-link" href="#">1</a></li>
-                              <li class="page-item"><a class="page-link" href="#">2</a></li>
-                              <li class="page-item"><a class="page-link" href="#">3</a></li>
-                              <li class="page-item"><a class="page-link" href="#">»</a></li>
-                            </ul>
-                          </div> --}}
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-0">
@@ -87,6 +78,9 @@
                           </table>
                         </div>
                         <!-- /.card-body -->
+                        <div class="card-footer d-flex justify-content-center">
+                          {{$categories->links()}}
+                        </div>
                       </div>
                 </div>
             </div>
